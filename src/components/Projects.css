@@ -1,0 +1,152 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Project Card ────────────────────────────────────────────────── */
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(79, 142, 247, 0.3);
+}
+
+/* Full-width card for project 05 */
+.project-card--full {
+  grid-column: 1 / -1;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* ── Preview Area ────────────────────────────────────────────────── */
+.project-preview {
+  height: 300px;
+  background: linear-gradient(135deg, #0d1f38 0%, #1a2d50 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-preview-inner {
+  width: 100%;
+  height: 100%;
+  background: #060d1a;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.project-preview-num {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.18);
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+/* Browser chrome (project 05) */
+.preview-bar {
+  width: 100%;
+  height: 12px;
+  background: #0a1628;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  gap: 4px;
+}
+
+.preview-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.preview-lines {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px 0;
+}
+
+.preview-line {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Info Area ───────────────────────────────────────────────────── */
+.project-info {
+  padding: 20px;
+}
+
+.project-num {
+  font-size: 0.65rem;
+  color: var(--accent-blue);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.project-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.project-desc {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-tags .tag {
+  background: rgba(79, 142, 247, 0.1);
+  border: 1px solid rgba(79, 142, 247, 0.2);
+  color: var(--accent-blue);
+  font-size: 0.65rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+}
+
+.view-more {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

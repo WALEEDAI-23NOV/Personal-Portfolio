@@ -1,0 +1,164 @@
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* All direct children sit above the canvas */
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Cube ─────────────────────────────────────────────────────────────── */
+.cube-container {
+  width: 400px;
+  height: 200px;
+  margin-top: 30px;
+  margin-bottom: 36px;
+  will-change: transform;
+  transform-origin: center center;
+  position: relative;
+}
+
+#cube-3d {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* ── Text ─────────────────────────────────────────────────────────────── */
+.hero-hello {
+  font-size: 0.78rem;
+  letter-spacing: 5px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 22px;
+  letter-spacing: -1px;
+  color: transparent;
+}
+
+/* Wave gradient text */
+.wave-text { --x: 50%; }
+
+.wave-text span {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #34d399, #22d3ee, #34d399);
+  /*background: linear-gradient(90deg, #a855f7, #4f8ef7, #a855f7);*/
+  /*background: linear-gradient(90deg, #ffffff, #f5c518, #ffffff);*/
+  /*background: linear-gradient(90deg, #00f0ff, #ff00c8, #00f0ff);*/
+  background-size: 200% 100%;
+  background-position: var(--x) center;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Decorative title row */
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.hero-title .line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a78bfa);
+  border-radius: 2px;
+}
+
+.hero-title .line.right {
+  background: linear-gradient(90deg, #a78bfa, transparent);
+}
+
+.hero-title .tag {
+  color: #a78bfa;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.hero-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 440px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.hero-exp {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+}
+
+.hero-exp strong {
+  color: #34d399;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Scroll Indicator ─────────────────────────────────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+}
+
+.scroll-indicator span {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(167, 139, 250, 0.6), transparent);
+  animation: scrollAnim 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+  0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  50%  { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+}

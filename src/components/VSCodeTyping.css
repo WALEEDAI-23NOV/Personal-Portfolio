@@ -1,0 +1,171 @@
+.vscode-window {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1e1e2e;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+}
+
+/* Title Bar */
+.vscode-titlebar {
+  background: #2a2a3d;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vscode-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red    { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green  { background: #28c840; }
+
+.vscode-filename-title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #8890a0;
+}
+
+/* Tabs */
+.vscode-tabs {
+  background: #252535;
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vscode-tab {
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.vscode-tab.active {
+  background: #1e1e2e;
+  color: #e2e8f0;
+  border-bottom: 2px solid #4fc3f7;
+}
+
+.vscode-tab.inactive {
+  color: #666;
+}
+
+.tab-icon { color: #4fc3f7; font-size: 0.7rem; }
+.tab-close { color: #555; margin-left: 4px; font-size: 0.8rem; }
+.tab-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #888;
+  margin-right: 5px;
+}
+
+/* Code Body */
+.vscode-body {
+  display: flex;
+  min-height: 240px;
+  background: #1e1e2e;
+  padding: 12px 0;
+}
+
+.vscode-gutter {
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px;
+  color: #4a5568;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  user-select: none;
+  min-width: 36px;
+  text-align: right;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.vscode-code {
+  padding: 0 16px;
+  flex: 1;
+  line-height: 1.7;
+  color: #cdd6f4;
+  font-size: 0.8rem;
+  white-space: pre;
+}
+
+.code-line {
+  display: block;
+  min-height: 1.3em;
+  position: relative;
+}
+
+.code-line.active-line {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 2px solid #4fc3f7;
+  margin-left: -2px;
+  padding-left: 2px;
+}
+
+/* Syntax Colours */
+.kw-class       { color: #cba6f7; }
+.kw-extends     { color: #89b4fa; }
+.kw-name        { color: #a6e3a1; }
+.kw-constructor { color: #89b4fa; }
+.kw-param       { color: #fab387; }
+.kw-this        { color: #89dceb; }
+.kw-method      { color: #89b4fa; }
+.kw-if          { color: #cba6f7; }
+.kw-punct       { color: #cdd6f4; }
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: #e2e8f0;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Status Bar */
+.vscode-statusbar {
+  background: #252535;
+  padding: 5px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  color: #8890a0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-ok  { color: #a6e3a1; }
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a6e3a1;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+.status-ts { color: #4fc3f7; }

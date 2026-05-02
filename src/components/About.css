@@ -1,0 +1,106 @@
+.about-section {}
+
+/* ── Two-column Grid ─────────────────────────────────────────────── */
+.about-grid {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── Section Label ───────────────────────────────────────────────── */
+.about-label {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-label.purple { color: #a78bfa; }
+.about-label.green  { color: #34d399; }
+
+.label-line {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+}
+
+.purple-line { background: #a78bfa; }
+.green-line  { background: #34d399; }
+
+.label-fade-line {
+  flex: 1;
+  display: inline-block;
+  height: 1px;
+}
+
+.purple-fade { background: rgba(167, 139, 250, 0.2); }
+.green-fade  { background: rgba(52, 211, 153, 0.2); }
+
+/* ── Bio Text ────────────────────────────────────────────────────── */
+.about-text {
+  font-size: 0.93rem;
+  line-height: 1.95;
+  color: #b0bcd4;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.text-white  { color: #fff;     font-weight: 600; }
+.text-blue   { color: #7dd3fc; }
+.text-purple { color: #a78bfa; }
+.text-green  { color: #34d399; font-weight: 600; }
+.text-orange { color: #f97316; font-weight: 600; }
+
+/* ── Stats Row ───────────────────────────────────────────────────── */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.stat-card:hover {
+  border-color: rgba(167, 139, 250, 0.3);
+  transform: translateY(-3px);
+}
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: #8890a0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

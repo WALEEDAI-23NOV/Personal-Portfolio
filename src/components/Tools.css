@@ -1,0 +1,95 @@
+/* ── Skill Group Wrapper ─────────────────────────────────────────── */
+.skills {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.skills-container {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 40px;
+  backdrop-filter: blur(20px);
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.skills-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.skills-header h3 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #9aa4b2;
+}
+
+.skills-header .line {
+  width: 40px;
+  height: 2px;
+  background: #7c3aed;
+}
+
+.line.pink   { background: #ec4899; }
+.line.orange { background: #f97316; }
+.line.green  { background: #22c55e; }
+
+/* ── Skill Grid ──────────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.skills-grid.small {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  max-width: 600px;
+}
+
+/* ── Skill Card ──────────────────────────────────────────────────── */
+.skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 30px 20px;
+  min-height: 140px;
+  text-align: center;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.skill-card img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.skill-card p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

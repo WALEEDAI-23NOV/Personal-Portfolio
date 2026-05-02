@@ -1,0 +1,47 @@
+.cta-section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.cta-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cta-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+}
+
+.cta-title span {
+  color: var(--accent-yellow);
+}
+
+.cta-desc {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin: 14px auto 30px;
+  max-width: 400px;
+  line-height: 1.7;
+}
+
+.email-btn {
+  background: rgba(79, 142, 247, 0.1);
+  border: 1px solid rgba(79, 142, 247, 0.3);
+  color: var(--accent-blue);
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.email-btn:hover {
+  background: rgba(79, 142, 247, 0.18);
+}
