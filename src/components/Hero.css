@@ -63,8 +63,8 @@
   font-weight: 900;
   /*background: linear-gradient(90deg, #34d399, #22d3ee, #34d399);*/
   /*background: linear-gradient(90deg, #a855f7, #4f8ef7, #a855f7);*/
-  background: linear-gradient(90deg, #ffffff, #f5c518, #ffffff);
-  /*background: linear-gradient(90deg, #00f0ff, #ff00c8, #00f0ff);*/
+  /*background: linear-gradient(90deg, #ffffff, #f5c518, #ffffff);*/
+  background: linear-gradient(90deg, #00f0ff, #ff00c8, #00f0ff);
   background-size: 200% 100%;
   background-position: var(--x) center;
   color: transparent;
