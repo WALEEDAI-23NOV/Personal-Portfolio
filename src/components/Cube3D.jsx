@@ -104,22 +104,54 @@ export default function Cube3D() {
       }
     }
 
-    // ── Mouse Interaction ─────────────────────────────────────────────────────
+    // ── Pointer Interaction (mouse + touch) ──────────────────────────────────
     let mouseX = 0, mouseY = 0;
     let targetX = 0, targetY = 0;
     let targetScale = 1;
 
-    const onMouseMove = (e) => {
-      mouseX = (e.clientX / window.innerWidth)  * 2 - 1;
-      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-    };
+    // Shared handler — works for both mouse position and touch position
+    function setPointer(clientX, clientY) {
+      mouseX = (clientX / window.innerWidth)  * 2 - 1;
+      mouseY = (clientY / window.innerHeight) * 2 - 1;
+    }
+
+    // Mouse
+    const onMouseMove = (e) => setPointer(e.clientX, e.clientY);
     window.addEventListener("mousemove", onMouseMove);
+
+    // Touch — use first touch point; prevent page scroll when interacting with cube
+    const onTouchMove = (e) => {
+      if (e.touches.length > 0) {
+        setPointer(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+    const onTouchEnd = () => {
+      // Smoothly return to centre when finger lifts
+      mouseX = 0;
+      mouseY = 0;
+    };
+
+    // Attach touch listeners to the container (not window) so only cube area reacts
+    container.addEventListener("touchmove",  onTouchMove, { passive: true });
+    container.addEventListener("touchend",   onTouchEnd,  { passive: true });
+    container.addEventListener("touchcancel", onTouchEnd, { passive: true });
+
+    // Auto-spin on mobile so cube looks alive without any interaction
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+    let autoSpinT  = 0;
 
     const maxRotation = Math.PI / 5;
     const smoothness  = 0.07;
 
     function animate() {
       requestAnimationFrame(animate);
+
+      // On touch devices, slowly auto-spin when user isn't touching
+      if (isMobile && mouseX === 0 && mouseY === 0) {
+        autoSpinT += 0.008;
+        mouseX = Math.sin(autoSpinT) * 0.6;
+        mouseY = Math.sin(autoSpinT * 0.5) * 0.3;
+      }
 
       targetX += (mouseX - targetX) * smoothness;
       targetY += (mouseY - targetY) * smoothness;
@@ -151,8 +183,11 @@ export default function Cube3D() {
     window.addEventListener("resize", onResize);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("mousemove",   onMouseMove);
+      window.removeEventListener("resize",      onResize);
+      container.removeEventListener("touchmove",   onTouchMove);
+      container.removeEventListener("touchend",    onTouchEnd);
+      container.removeEventListener("touchcancel", onTouchEnd);
       renderer.dispose();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);

@@ -13,14 +13,22 @@ export default function Hero({ threeLoaded }) {
   const [waveX, setWaveX]   = useState(50);
   const cubeContainerRef    = useRef(null);
 
-  // Wave gradient follows mouse X
+  // Wave gradient follows mouse X — and touch X on mobile
   useEffect(() => {
-    const onMove = (e) => setWaveX((e.clientX / window.innerWidth) * 100);
+    const onMove  = (e) => setWaveX((e.clientX / window.innerWidth) * 100);
+    const onTouch = (e) => {
+      if (e.touches.length > 0)
+        setWaveX((e.touches[0].clientX / window.innerWidth) * 100);
+    };
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchmove", onTouch);
+    };
   }, []);
 
-  // Cube tilt & float animation
+  // Cube tilt & float animation — supports mouse and touch
   useEffect(() => {
     const hero = document.getElementById("hero");
     if (!hero || !cubeContainerRef.current) return;
@@ -28,18 +36,28 @@ export default function Hero({ threeLoaded }) {
     let tiltX = 0, tiltY = 0, targetX = 0, targetY = 0, floatT = 0;
     let rafId;
 
-    const onMove = (e) => {
+    // Shared handler — computes normalised tilt from any pointer position
+    function applyPointer(clientX, clientY) {
       const rect = hero.getBoundingClientRect();
-      const nx   = (e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
-      const ny   = (e.clientY - rect.top  - rect.height / 2) / (rect.height / 2);
+      const nx   = (clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
+      const ny   = (clientY - rect.top  - rect.height / 2) / (rect.height / 2);
       targetY    = nx * 14;
       targetX    = -ny * 14;
+    }
+
+    const onMove   = (e) => applyPointer(e.clientX, e.clientY);
+    const onLeave  = () => { targetX = 0; targetY = 0; };
+    const onTouch  = (e) => {
+      if (e.touches.length > 0)
+        applyPointer(e.touches[0].clientX, e.touches[0].clientY);
     };
+    const onTouchEnd = () => { targetX = 0; targetY = 0; };
 
-    const onLeave = () => { targetX = 0; targetY = 0; };
-
-    hero.addEventListener("mousemove",  onMove);
-    hero.addEventListener("mouseleave", onLeave);
+    hero.addEventListener("mousemove",   onMove);
+    hero.addEventListener("mouseleave",  onLeave);
+    hero.addEventListener("touchmove",   onTouch,    { passive: true });
+    hero.addEventListener("touchend",    onTouchEnd, { passive: true });
+    hero.addEventListener("touchcancel", onTouchEnd, { passive: true });
 
     const lerp = (a, b, t) => a + (b - a) * t;
 
@@ -58,8 +76,11 @@ export default function Hero({ threeLoaded }) {
 
     return () => {
       cancelAnimationFrame(rafId);
-      hero.removeEventListener("mousemove",  onMove);
-      hero.removeEventListener("mouseleave", onLeave);
+      hero.removeEventListener("mousemove",   onMove);
+      hero.removeEventListener("mouseleave",  onLeave);
+      hero.removeEventListener("touchmove",   onTouch);
+      hero.removeEventListener("touchend",    onTouchEnd);
+      hero.removeEventListener("touchcancel", onTouchEnd);
     };
   }, []);
 

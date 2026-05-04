@@ -1,9 +1,10 @@
+/* ── Base Navbar ─────────────────────────────────────────────────── */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 200;
   padding: 18px 60px;
   display: flex;
   justify-content: space-between;
@@ -19,6 +20,7 @@
   letter-spacing: 1px;
 }
 
+/* ── Desktop Links ───────────────────────────────────────────────── */
 .nav-links {
   display: flex;
   gap: 36px;
@@ -37,12 +39,102 @@
   color: var(--accent-blue);
 }
 
-@media (max-width: 900px) {
+/* ── Hamburger Button ────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 201;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile Slide-down Menu ──────────────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  top: 61px; /* navbar height */
+  left: 0;
+  right: 0;
+  z-index: 199;
+  background: rgba(6, 13, 26, 0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.mobile-menu--open {
+  max-height: 400px;
+  padding: 16px 0 24px;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mobile-nav-links a {
+  display: block;
+  padding: 12px 32px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-nav-links a:hover,
+.mobile-nav-links a.active {
+  color: var(--accent-blue);
+}
+
+/* Backdrop overlay */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 198;
+  background: transparent;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
   .navbar {
     padding: 16px 20px;
   }
 
+  /* Hide desktop links, show hamburger */
   .nav-links {
-    gap: 18px;
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
   }
 }
