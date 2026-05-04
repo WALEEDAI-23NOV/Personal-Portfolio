@@ -1,5 +1,5 @@
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
-import p1 from "../assets/projects/project-01.jpg";
+import image from '../assets/projects/project-1.jpg'
 import p2 from "../assets/projects/project-2.png";
 import p3 from "../assets/projects/project-3.jpg";
 import p4 from "../assets/projects/project-4.png";
