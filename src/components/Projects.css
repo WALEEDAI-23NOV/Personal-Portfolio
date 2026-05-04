@@ -31,7 +31,7 @@
 /* ── Preview Area ────────────────────────────────────────────────── */
 .project-preview {
   height: 300px;
-  background: linear-gradient(135deg, #0d1f38 0%, #1a2d50 100%);
+  background: #060d1a;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -51,6 +51,21 @@
   flex-direction: column;
   gap: 6px;
   overflow: hidden;
+}
+
+/* ── Real screenshot image ───────────────────────────────────────── */
+.project-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #060d1a;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-preview-img {
+  transform: scale(1.03);
 }
 
 .project-preview-num {
