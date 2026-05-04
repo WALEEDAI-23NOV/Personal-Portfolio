@@ -1,4 +1,8 @@
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
+import p1 from "../assets/projects/project-01.jpg";
+import p2 from "../assets/projects/project-2.png";
+import p3 from "../assets/projects/project-3.jpg";
+import p4 from "../assets/projects/project-4.png";
 export const navLinks = [
   { href: "#hero",     label: "Home" },
   { href: "#about",   label: "About" },
@@ -55,6 +59,7 @@ export const projects = [
     desc: "The Smart Event Management System (SEMS) is a platform for planning, booking, and managing events in one place. It connects organizers, vendors, and customers to streamline coordination.",
     tags: ["Java", "Kotlin", "XML", "Firebase"],
     imgGradient: "linear-gradient(135deg,#0d3b6e,#1a2d50)",
+    image: p1,
   },
   {
     num: "02",
@@ -62,6 +67,7 @@ export const projects = [
     desc: "A fan-made website dedicated to the game Dead by Daylight, built using React and styled with Tailwind CSS for a sleek and responsive design.",
     tags: ["React", "TypeScript", "Node", "MySQL"],
     imgGradient: "linear-gradient(135deg,#3b0d0d,#200a0a)",
+    image: p2,
   },
   {
     num: "03",
@@ -69,6 +75,7 @@ export const projects = [
     desc: "The website faithfully recreates the game's dark and mysterious aesthetic, with a focus on stunning visuals, seamless navigation, and engaging user interactions.",
     tags: ["Vue", "Nuxt", "Tailwind", "Contentful"],
     imgGradient: "linear-gradient(135deg,#0d3b1a,#1a3020)",
+    image: p3,
   },
   {
     num: "04",
@@ -76,6 +83,8 @@ export const projects = [
     desc: "A WordPress-powered news platform designed to present impactful stories with clarity and accessibility. Features responsive design and category-based news coverage.",
     tags: ["React", "Framer Motion", "SCSS", "Vite"],
     imgGradient: "linear-gradient(135deg,#8b0000,#3b0d0d)",
+    image: p4,
+
   },
 ];
 
