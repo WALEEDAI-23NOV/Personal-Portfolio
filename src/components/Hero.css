@@ -59,12 +59,23 @@
 .wave-text { --x: 50%; }
 
 
-.wave-text span{
-      background: linear-gradient(135deg, #fff 0% 40%, #9970fd 60%, #c964c4 80%, #5fd4ae 100%) 0 0 / 200%;
-    -webkit-text-fill-color: #0000;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: 4s ease-in-out infinite 
+@keyframes waveAnimation {
+  0%, 100% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+}
+
+/* TEXT STYLE */
+.wave-text span {
+  background: linear-gradient(135deg, #fff 0% 40%, #9970fd 60%, #c964c4 80%, #5fd4ae 100%) 0 0 / 200%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: waveAnimation 4s ease-in-out infinite;
 }
 
 /* Decorative title row */
