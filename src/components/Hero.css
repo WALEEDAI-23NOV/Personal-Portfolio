@@ -58,18 +58,13 @@
 /* Wave gradient text */
 .wave-text { --x: 50%; }
 
-.wave-text span {
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  font-weight: 900;
-  /*background: linear-gradient(90deg, #34d399, #22d3ee, #34d399);*/
-  /*background: linear-gradient(90deg, #a855f7, #4f8ef7, #a855f7);*/
-  /*background: linear-gradient(90deg, #ffffff, #f5c518, #ffffff);*/
-  background: linear-gradient(90deg, #00f0ff, #ff00c8, #00f0ff);
-  background-size: 200% 100%;
-  background-position: var(--x) center;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+
+.wave-text span{
+      background: linear-gradient(135deg, #fff 0% 40%, #9970fd 60%, #c964c4 80%, #5fd4ae 100%) 0 0 / 200%;
+    -webkit-text-fill-color: #0000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: 4s ease-in-out infinite 
 }
 
 /* Decorative title row */
