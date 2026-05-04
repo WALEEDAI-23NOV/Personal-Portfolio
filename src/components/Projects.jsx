@@ -5,9 +5,9 @@ import "./Projects.css";
 // ── Apni images yahan import karo ──────────────────────────────────
 // File ka naam apna likho, baaki sab same rehga
 import img01 from "../assets/projects/project-1.jpg";
-import img02 from "../assets/projects/dbd.jpg";
-import img03 from "../assets/projects/valhalla.jpg";
-import img04 from "../assets/projects/aamawaam.jpg";
+import img02 from "../assets/projects/project-2.png";
+import img03 from "../assets/projects/project-3.jpg";
+import img04 from "../assets/projects/project-4.png";
 
 // num ke saath image match karo
 const projectImages = {
