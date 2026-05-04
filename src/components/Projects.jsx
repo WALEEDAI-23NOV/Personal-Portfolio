@@ -2,11 +2,22 @@ import React from "react";
 import { projects } from "../data/portfolioData";
 import "./Projects.css";
 
-/**
- * Projects
- * Grid of project cards (4 standard + 1 full-width featured).
- * Each card shows a gradient preview, number, name, description, and tech tags.
- */
+// ── Apni images yahan import karo ──────────────────────────────────
+// File ka naam apna likho, baaki sab same rehga
+import img01 from "../assets/projects/project-1.jpg";
+import img02 from "../assets/projects/dbd.jpg";
+import img03 from "../assets/projects/valhalla.jpg";
+import img04 from "../assets/projects/aamawaam.jpg";
+
+// num ke saath image match karo
+const projectImages = {
+  "01": img01,
+  "02": img02,
+  "03": img03,
+  "04": img04,
+};
+// ───────────────────────────────────────────────────────────────────
+
 export default function Projects() {
   return (
     <section id="projects">
@@ -18,16 +29,25 @@ export default function Projects() {
       <div className="divider fade-in" />
 
       <div className="projects-grid fade-in">
-        {/* Standard project cards */}
         {projects.map((project) => (
           <div key={project.num} className="project-card">
             <div className="project-preview">
-              <div
-                className="project-preview-inner"
-                style={{ background: project.imgGradient }}
-              >
-                <div className="project-preview-num">{project.num}</div>
-              </div>
+              {projectImages[project.num] ? (
+                // Real screenshot
+                <img
+                  src={projectImages[project.num]}
+                  alt={`Project ${project.num}`}
+                  className="project-preview-img"
+                />
+              ) : (
+                // Gradient fallback — agar image na ho
+                <div
+                  className="project-preview-inner"
+                  style={{ background: project.imgGradient }}
+                >
+                  <div className="project-preview-num">{project.num}</div>
+                </div>
+              )}
             </div>
 
             <div className="project-info">
@@ -43,7 +63,7 @@ export default function Projects() {
           </div>
         ))}
 
-        {/* Featured project 05 — spans full row */}
+        {/* Featured project 05 */}
         <div className="project-card project-card--full">
           <div className="project-preview">
             <div className="project-preview-inner">
