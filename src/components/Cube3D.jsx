@@ -109,7 +109,26 @@ export default function Cube3D() {
     let targetX = 0, targetY = 0;
     let targetScale = 1;
 
-    // Shared handler — works for both mouse position and touch position
+    // Scroll parallax — only active on touch devices
+    // scrollDeltaY: positive = scrolled down (cube face tilts UP), negative = up (face tilts DOWN)
+    let scrollTiltY   = 0;  // current smooth scroll tilt contribution
+    let scrollTarget  = 0;  // raw target from scroll delta
+    let lastScrollY   = window.scrollY;
+
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+
+    const onScroll = () => {
+      if (!isMobile) return;
+      const delta    = window.scrollY - lastScrollY;
+      lastScrollY    = window.scrollY;
+      // Scrolling down → positive delta → tilt cube face upward (negative X rotation)
+      scrollTarget  -= delta * 0.004;
+      // Clamp so it doesn't flip too far
+      scrollTarget   = Math.max(-0.6, Math.min(0.6, scrollTarget));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Shared pointer handler — works for both mouse position and touch position
     function setPointer(clientX, clientY) {
       mouseX = (clientX / window.innerWidth)  * 2 - 1;
       mouseY = (clientY / window.innerHeight) * 2 - 1;
@@ -119,26 +138,23 @@ export default function Cube3D() {
     const onMouseMove = (e) => setPointer(e.clientX, e.clientY);
     window.addEventListener("mousemove", onMouseMove);
 
-    // Touch — use first touch point; prevent page scroll when interacting with cube
+    // Touch — use first touch point
     const onTouchMove = (e) => {
       if (e.touches.length > 0) {
         setPointer(e.touches[0].clientX, e.touches[0].clientY);
       }
     };
     const onTouchEnd = () => {
-      // Smoothly return to centre when finger lifts
       mouseX = 0;
       mouseY = 0;
     };
 
-    // Attach touch listeners to the container (not window) so only cube area reacts
-    container.addEventListener("touchmove",  onTouchMove, { passive: true });
-    container.addEventListener("touchend",   onTouchEnd,  { passive: true });
-    container.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    container.addEventListener("touchmove",   onTouchMove,  { passive: true });
+    container.addEventListener("touchend",    onTouchEnd,   { passive: true });
+    container.addEventListener("touchcancel", onTouchEnd,   { passive: true });
 
-    // Auto-spin on mobile so cube looks alive without any interaction
-    const isMobile = window.matchMedia("(pointer: coarse)").matches;
-    let autoSpinT  = 0;
+    // Auto-spin on mobile so cube looks alive when untouched
+    let autoSpinT = 0;
 
     const maxRotation = Math.PI / 5;
     const smoothness  = 0.07;
@@ -146,18 +162,23 @@ export default function Cube3D() {
     function animate() {
       requestAnimationFrame(animate);
 
-      // On touch devices, slowly auto-spin when user isn't touching
+      // Auto-spin when no touch input on mobile
       if (isMobile && mouseX === 0 && mouseY === 0) {
         autoSpinT += 0.008;
         mouseX = Math.sin(autoSpinT) * 0.6;
         mouseY = Math.sin(autoSpinT * 0.5) * 0.3;
       }
 
+      // Smoothly decay scroll tilt back to zero
+      scrollTarget  *= 0.92;
+      scrollTiltY    = scrollTiltY + (scrollTarget - scrollTiltY) * 0.1;
+
       targetX += (mouseX - targetX) * smoothness;
       targetY += (mouseY - targetY) * smoothness;
 
       rubiks.rotation.y = targetX * maxRotation;
-      rubiks.rotation.x = targetY * maxRotation;
+      // Blend pointer Y with scroll tilt — scroll adds extra X rotation
+      rubiks.rotation.x = targetY * maxRotation + scrollTiltY;
 
       const distance = Math.sqrt(mouseX * mouseX + mouseY * mouseY);
       const magnet   = 1 - Math.min(distance, 1);
@@ -185,6 +206,7 @@ export default function Cube3D() {
     return () => {
       window.removeEventListener("mousemove",   onMouseMove);
       window.removeEventListener("resize",      onResize);
+      window.removeEventListener("scroll",      onScroll);
       container.removeEventListener("touchmove",   onTouchMove);
       container.removeEventListener("touchend",    onTouchEnd);
       container.removeEventListener("touchcancel", onTouchEnd);
