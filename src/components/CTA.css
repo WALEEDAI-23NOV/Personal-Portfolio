@@ -1,17 +1,22 @@
 .cta-section {
   text-align: center;
-  padding: 100px 20px;
+  padding: 100px 20px 80px;
+  position: relative;
 }
 
 .cta-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 16px;
+  font-size: 2.2rem;
+  margin-bottom: 14px;
   display: block;
 }
 
 .cta-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+  color: #f3f4f6;
 }
 
 .cta-title span {
@@ -20,28 +25,157 @@
 
 .cta-desc {
   color: var(--text-secondary);
-  font-size: 0.85rem;
-  margin: 14px auto 30px;
-  max-width: 400px;
+  font-size: 0.88rem;
+  margin: 0 auto 32px;
+  max-width: 520px;
   line-height: 1.7;
 }
 
+/* ── Email Button ───────────────────────── */
 .email-btn {
-  background: rgba(79, 142, 247, 0.1);
-  border: 1px solid rgba(79, 142, 247, 0.3);
-  color: var(--accent-blue);
-  padding: 12px 28px;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  min-width: 300px;
+  height: 56px;
+  margin: 0 auto;
+
+  background: rgba(79, 142, 247, 0.08);
+  border: 1px solid rgba(79, 142, 247, 0.22);
+  color: #dbeafe;
+
+  border-radius: 14px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
   font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  transition: background 0.2s;
+
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
+
   text-decoration: none;
+
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
 }
 
 .email-btn:hover {
-  background: rgba(79, 142, 247, 0.18);
+  transform: translateY(-3px);
+  background: rgba(79, 142, 247, 0.14);
+  border-color: rgba(79, 142, 247, 0.35);
+}
+
+/* ── Social Title ───────────────────────── */
+.social-wrapper {
+  margin-top: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.social-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.social-text {
+  font-size: 0.68rem;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Space Mono', monospace;
+}
+
+/* ── Social Cards ───────────────────────── */
+.social-links {
+  margin-top: 24px;
+
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-card {
+  min-width: 145px;
+  height: 52px;
+  padding: 0 18px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.social-card svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-card:hover {
+  transform: translateY(-4px);
+
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+
+  color: white;
+}
+.cta-credit {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  opacity: 0.7;
+}
+
+.cta-credit-line {
+  width: 110px;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.cta-credit p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.3px;
+}
+
+.cta-credit p span {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 768px) {
+  .cta-title {
+    font-size: 2.3rem;
+  }
+
+  .cta-desc {
+    font-size: 0.82rem;
+  }
+
+  .email-btn {
+    min-width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .social-card {
+    min-width: 100%;
+  }
+  
 }

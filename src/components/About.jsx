@@ -38,7 +38,7 @@ export default function About() {
               development.
             </p>
             <p>
-              With over <span className="text-green">2 years of experience</span>, I specialize
+              With over <span className="text-green">1 year of experience</span>, I specialize
               in front-end development, crafting engaging and user-friendly interfaces. Alongside
               this, I also work with WordPress, developing news, blogging, and e-commerce
               websites.

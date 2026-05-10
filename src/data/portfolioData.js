@@ -60,21 +60,21 @@ export const projects = [
     num: "02",
     name: "✦ DEAD BY DAYLIGHT GAME WEBSITE",
     desc: "A fan-made website dedicated to the game Dead by Daylight, built using React and styled with Tailwind CSS for a sleek and responsive design.",
-    tags: ["React", "TypeScript", "Node", "MySQL"],
+    tags: ["React", "Tailwind"],
     imgGradient: "linear-gradient(135deg,#3b0d0d,#200a0a)",
   },
   {
     num: "03",
     name: "✦ Gaming Website UI AC Valhalla",
     desc: "The website faithfully recreates the game's dark and mysterious aesthetic, with a focus on stunning visuals, seamless navigation, and engaging user interactions.",
-    tags: ["Vue", "Nuxt", "Tailwind", "Contentful"],
+    tags: ["React", "Tailwind"],
     imgGradient: "linear-gradient(135deg,#0d3b1a,#1a3020)",
   },
   {
     num: "04",
     name: "✦ AamAwaam – News & Blogging Platform (WordPress)",
     desc: "A WordPress-powered news platform designed to present impactful stories with clarity and accessibility. Features responsive design and category-based news coverage.",
-    tags: ["React", "Framer Motion", "SCSS", "Vite"],
+    tags: ["WordPress", "Divi", "PHP", "CSS"],
     imgGradient: "linear-gradient(135deg,#8b0000,#3b0d0d)",
   },
 ];
@@ -83,7 +83,7 @@ export const projects = [
 export const stats = [
   { num: "1+",  label: "Years Experience" },
   { num: "10+", label: "Projects Delivered" },
-  { num: "5+",  label: "Technologies" },
+  { num: "3+",  label: "Technologies" },
 ];
 
 // ─── POSTS ────────────────────────────────────────────────────────────────────
@@ -148,10 +148,6 @@ export const vsCodeLines = [
   {
     plain: "            this.playCricket()",
     html:  '            <span class="kw-this">this</span><span class="kw-punct">.</span><span class="kw-method">playCricket</span><span class="kw-punct">()</span>',
-  },
-  {
-    plain: "            this.findMyCat()",
-    html:  '            <span class="kw-this">this</span><span class="kw-punct">.</span><span class="kw-method">findMyCat</span><span class="kw-punct">()</span>',
   },
   {
     plain: "        }",

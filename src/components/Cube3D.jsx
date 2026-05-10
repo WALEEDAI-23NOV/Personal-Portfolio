@@ -1,17 +1,17 @@
 import React, { useRef, useEffect } from "react";
+import * as THREE from "three";
 
 /**
  * Cube3D
  * Renders an interactive 3D Rubik's cube via Three.js.
- * Requires window.THREE to be loaded before mounting.
+ * Requires THREE to be loaded before mounting.
  * Mouse movement rotates and scales the cube.
  */
 export default function Cube3D() {
   const cubeRef = useRef(null);
 
   useEffect(() => {
-    if (!window.THREE) return;
-    const THREE     = window.THREE;
+  
     const container = cubeRef.current;
     if (!container) return;
 
@@ -28,7 +28,7 @@ export default function Cube3D() {
     // ── Renderer ─────────────────────────────────────────────────────────────
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping      = THREE.ACESFilmicToneMapping;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
@@ -39,7 +39,7 @@ export default function Cube3D() {
     const eL1 = new THREE.PointLight(0xffffff, 3); eL1.position.set(10, 10, 10);   envScene.add(eL1);
     const eL2 = new THREE.PointLight(0xffffff, 2); eL2.position.set(-10, -10, -10); envScene.add(eL2);
 
-    const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256);
+    const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(128);
     const cubeCamera       = new THREE.CubeCamera(0.1, 1000, cubeRenderTarget);
     scene.environment      = cubeRenderTarget.texture;
 

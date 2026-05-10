@@ -35,9 +35,7 @@ export default function App() {
       <About />
       <Tools />
       <Projects />
-      <Posts />
       <CTA />
-      <Footer />
     </>
   );
 }

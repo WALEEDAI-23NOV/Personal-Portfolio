@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="footer">
       <span>© 2024 Waleed Razaq. All rights reserved.</span>
       <div className="footer-links">
-        <a href="#">GitHub</a>
+        <a  href="https://github.com/WALEEDAI-23NOV">GitHub</a>
         <a href="#">LinkedIn</a>
         <a href="#">Twitter</a>
       </div>

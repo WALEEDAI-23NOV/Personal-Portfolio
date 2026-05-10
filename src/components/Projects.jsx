@@ -8,6 +8,8 @@ import img01 from "../assets/projects/project-1.png";
 import img02 from "../assets/projects/project-2.png";
 import img03 from "../assets/projects/project-3.png";
 import img04 from "../assets/projects/project-4.png";
+import img05 from "../assets/projects/project-5.png";
+
 
 // num ke saath image match karo
 const projectImages = {
@@ -15,6 +17,7 @@ const projectImages = {
   "02": img02,
   "03": img03,
   "04": img04,
+  "05": img05
 };
 // ───────────────────────────────────────────────────────────────────
 
@@ -66,30 +69,21 @@ export default function Projects() {
         {/* Featured project 05 */}
         <div className="project-card project-card--full">
           <div className="project-preview">
-            <div className="project-preview-inner">
-              <div className="preview-bar">
-                <div className="preview-dot" style={{ background: "#ff5f57" }} />
-                <div className="preview-dot" style={{ background: "#febc2e" }} />
-                <div className="preview-dot" style={{ background: "#28c840" }} />
-              </div>
-              <div className="preview-lines">
-                <div className="preview-line" style={{ width: "75%", background: "#f39c12" }} />
-                <div className="preview-line" style={{ width: "55%" }} />
-                <div className="preview-line" style={{ width: "90%" }} />
-                <div className="preview-line" style={{ width: "70%" }} />
-              </div>
-            </div>
+               <img
+                 src={img05}
+                 alt="Project 05"
+                 className="project-preview-img"
+                />
           </div>
 
           <div className="project-info">
             <div className="project-num">05</div>
-            <h3 className="project-name">✦ Office Management System</h3>
+            <h3 className="project-name">✦ Portfolio Website</h3>
             <p className="project-desc">
-              A comprehensive platform for attendance, leave management, payroll, and employee
-              records — built for modern teams.
+              The very website you’re viewing now! A creative personal portfolio showcasing immersive 3D visuals, smooth scrolling animations, and an IDE-inspired About section.
             </p>
             <div className="project-tags">
-              {["React", "TypeScript", "GraphQL", "Prisma"].map((tag) => (
+              {["React", "Three.js", "CSS"].map((tag) => (
                 <span key={tag} className="tag">{tag}</span>
               ))}
             </div>
@@ -98,7 +92,13 @@ export default function Projects() {
       </div>
 
       <div className="view-more fade-in">
-        <a href="#" className="btn-outline" style={{ fontSize: "0.8rem" }}>
+       <a
+            href="https://github.com/WALEEDAI-23NOV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+            style={{ fontSize: "0.8rem" }}
+        >
           View More On Git →
         </a>
       </div>
